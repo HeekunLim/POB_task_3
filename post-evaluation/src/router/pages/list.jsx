@@ -1,13 +1,14 @@
 import React from "react";
-
 import { useSelector, useDispatch } from "react-redux";
-import { setRate } from "../../redux/slices/slice";
-
+import { setRates } from "../../redux/slices/slice";
 import Axios from "axios";
+import { RateBlock } from "./components";
+import { useNavigate } from "react-router-dom";
 
 const List = () => {
+  const { rates } = useSelector((state) => state.rates);
   const dispatch = useDispatch();
-  const { rate } = useSelector((state) => state.rate);
+  let navigate = useNavigate();
 
   React.useEffect(() => {
     try {
@@ -16,17 +17,26 @@ const List = () => {
           "Content-Type": "application/json",
         },
       }).then((response) => {
-        dispatch(setRate(response.data));
+        dispatch(setRates(response.data));
       });
     } catch (error) {
       console.error(error);
     }
   }, []);
 
+  function handleClick(checkid) {
+    navigate("/detail/" + checkid);
+  }
+
   return (
     <div>
-      <p>list</p>
-      <p>{JSON.stringify(rate)}</p>
+      <h1>list</h1>
+      {rates.map((r) => (
+        <div>
+          <RateBlock key={r.id} rate={r} />
+          <button onClick={() => handleClick(r.id)}>수정</button>
+        </div>
+      ))}
     </div>
   );
 };
