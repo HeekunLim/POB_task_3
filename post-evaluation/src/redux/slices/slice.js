@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   rates: [],
+  score: 0,
 };
 
 const rateSlice = createSlice({
@@ -17,9 +18,12 @@ const rateSlice = createSlice({
 
       state.rates[index].rate = newScore;
     },
+    setScore(state, action) {
+      state.score = action.payload;
+    },
   },
 });
 
-export const { setRates, changeRate } = rateSlice.actions;
+export const { setRates, changeRate, setScore } = rateSlice.actions;
 
 export default rateSlice.reducer;

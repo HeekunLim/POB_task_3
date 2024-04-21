@@ -8,7 +8,7 @@ const RateBlock = ({ rate }) => {
   // 날짜에 해당하는 요일 출력
   return (
     <div>
-      <StyledDay
+      <p
         style={{
           display: "flex",
           justifyContent: "center",
@@ -19,18 +19,9 @@ const RateBlock = ({ rate }) => {
         }}
       >
         {week[dayNum]}
-      </StyledDay>
+      </p>
     </div>
   );
 };
 
 export { RateBlock };
-
-const StyledDay = styled.p`
-  display: flex;
-  justifycontent: center;
-  alignitems: center;
-  width: 50px;
-  height: 50px;
-  fontsize: 30px;
-`;
