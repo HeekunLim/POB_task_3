@@ -11,7 +11,7 @@ const RateBlock = ({ rate }) => {
       <p
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "flex-end",
           alignItems: "center",
           width: "50px",
           height: "50px",
